@@ -32,10 +32,8 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
-# for other dependencies(etc. Puppeteer)
-RUN apk add --no-cache chromium wget
-ENV PUPPETEER_SKIP_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+# for other dependencies(etc. libc6)
+RUN apk add --no-cache libc6-compat wget curl
 
 # Security: Create non-root user
 RUN addgroup --system --gid 1001 nodejs
